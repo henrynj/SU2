@@ -1476,6 +1476,15 @@ public:
 	 */
   void SetExternal_Deformation(CGeometry *geometry, CConfig *config, unsigned short iZone, unsigned long iter);
   
+  /*! 
+	 * \brief Set any surface deformations based on an input file.
+	 * \param[in] geometry - Geometrical definition of the problem.
+	 * \param[in] config - Definition of the particular problem.
+   * \param[in] iZone - Zone number in the mesh.
+   * \param[in] iter - Current physical time iteration.  // should be removed
+	 */
+  void SetExternal_Displacement(CGeometry *geometry, CConfig *config, unsigned short iZone, unsigned long iter);
+  
 	/*! 
 	 * \brief Set a displacement for surface movement.
 	 * \param[in] boundary - Geometry of the boundary.

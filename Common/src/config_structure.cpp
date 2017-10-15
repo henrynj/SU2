@@ -4219,7 +4219,8 @@ void CConfig::SetOutput(unsigned short val_software, unsigned short val_izone) {
       
       if ((Design_Variable[iDV] != NO_DEFORMATION) &&
           (Design_Variable[iDV] != FFD_SETTING) &&
-          (Design_Variable[iDV] != SURFACE_FILE)) {
+          (Design_Variable[iDV] != SURFACE_FILE) &&
+	  (Design_Variable[iDV] != SURFACE_DISPLACEMENT)) {
         
         if (iDV == 0)
           cout << "Design variables definition (markers <-> value <-> param):" << endl;

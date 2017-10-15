@@ -1266,7 +1266,9 @@ enum ENUM_PARAM {
   CST = 21,                  /*!< \brief CST method with Kulfan parameters for airfoil deformation. */
   SURFACE_BUMP = 22,	       /*!< \brief Surfacebump function for flat surfaces deformation. */
   SURFACE_FILE = 23,		     /*!< Nodal coordinates set using a surface file. */
-  NO_DEFORMATION = 24,		   /*!< \brief No Deformation. */
+  SURFACE_DISPLACEMENT = 26,
+  CUSTOM = 24,               /*!< 'CUSTOM' for use in external python analysis. */
+  NO_DEFORMATION = 25,		   /*!< \brief No Deformation. */
   ANGLE_OF_ATTACK = 101,	   /*!< \brief Angle of attack for airfoils. */
   FFD_ANGLE_OF_ATTACK = 102	 /*!< \brief Angle of attack for FFD problem. */
 };
@@ -1296,6 +1298,8 @@ static const map<string, ENUM_PARAM> Param_Map = CCreateMap<string, ENUM_PARAM>
 ("PARABOLIC", PARABOLIC)
 ("AIRFOIL", AIRFOIL)
 ("SURFACE_FILE", SURFACE_FILE)
+("SURFACE_DISPLACEMENT", SURFACE_DISPLACEMENT)
+("CUSTOM", CUSTOM)
 ("NO_DEFORMATION", NO_DEFORMATION)
 ("CST", CST);
 
@@ -2270,6 +2274,9 @@ public:
         case FFD_THICKNESS:        nParamDV = 3; break;
         case FFD_ANGLE_OF_ATTACK:  nParamDV = 2; break;
         case SURFACE_FILE:         nParamDV = 0; break;
+        case SURFACE_DISPLACEMENT: nParamDV = 0; break;
+        case CUSTOM:               nParamDV = 1; break;
+
         default : {
           string newstring;
           newstring.append(this->name);
