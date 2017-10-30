@@ -47,8 +47,6 @@ int main(int argc, char *argv[]) {
   int  buffsize;
   char *buffptr;
   SU2_MPI::Init(&argc, &argv);
-  MPI_Comm inter_comm;
-  MPI_Comm_get_parent(&inter_comm); 
   MPI_Buffer_attach( malloc(BUFSIZE), BUFSIZE );
   SU2_Comm MPICommunicator(MPI_COMM_WORLD);
 #else
@@ -151,7 +149,6 @@ int main(int argc, char *argv[]) {
 #ifdef HAVE_MPI
   MPI_Buffer_detach(&buffptr, &buffsize);
   free(buffptr);
-  MPI_Comm_disconnect( &inter_comm );
   MPI_Finalize();
 #endif
   

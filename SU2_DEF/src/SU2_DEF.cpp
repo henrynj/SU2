@@ -47,8 +47,6 @@ int main(int argc, char *argv[]) {
 
 #ifdef HAVE_MPI
   SU2_MPI::Init(&argc,&argv);
-  MPI_Comm inter_comm;
-  MPI_Comm_get_parent(&inter_comm); 
   SU2_Comm MPICommunicator(MPI_COMM_WORLD);
   MPI_Comm_rank(MPICommunicator,&rank);
   MPI_Comm_size(MPICommunicator,&size);
@@ -323,7 +321,6 @@ int main(int argc, char *argv[]) {
   /*--- Finalize MPI parallelization ---*/
 
 #ifdef HAVE_MPI
-  MPI_Comm_disconnect( &inter_comm );
   MPI_Finalize();
 #endif
   
